@@ -4,9 +4,6 @@ console.log(
 );
 function slotMachine() {
   var status = "active";
-  const slotOne = Math.floor(Math.random() * 10);
-  const slotTwo = Math.floor(Math.random() * 10);
-  const slotThree = Math.floor(Math.random() * 10);
   let totalCash = prompt(
     "Let's get you started, how much money do you wanna risk?"
   );
@@ -27,6 +24,9 @@ function slotMachine() {
   let promptSpin = prompt("Type 'spin' to pull the lever!");
 
   while ((status = true)) {
+    const slotOne = Math.floor(Math.random() * 10);
+    const slotTwo = Math.floor(Math.random() * 10);
+    const slotThree = Math.floor(Math.random() * 10);
     console.log(slotOne, slotTwo, slotThree);
     if (slotOne === slotTwo || slotTwo === slotThree || slotOne === slotThree) {
       console.log("Winner! Here's your prize!");
@@ -34,7 +34,7 @@ function slotMachine() {
       console.log(totalCash);
       answer = prompt("Would you like to spin again? (y/n)");
       if ((answer = "y")) {
-        status = "active";
+        status = true;
       } else {
         status = false;
       }
