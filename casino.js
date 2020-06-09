@@ -3,7 +3,7 @@ console.log(
   "Home to our infamous slot machines, where you may or may not win something!"
 );
 function slotMachine() {
-  var status = "active";
+  var status = true;
   let totalCash = prompt(
     "Let's get you started, how much money do you wanna risk?"
   );
@@ -28,7 +28,7 @@ function slotMachine() {
     const slotTwo = Math.floor(Math.random() * 10);
     const slotThree = Math.floor(Math.random() * 10);
     console.log(slotOne, slotTwo, slotThree);
-    if (slotOne === slotTwo || slotTwo === slotThree || slotOne === slotThree) {
+    if (slotOne === slotTwo && slotTwo === slotThree) {
       console.log("Winner! Here's your prize!");
       totalCash += betPrompt * 2;
       console.log(totalCash);
@@ -46,10 +46,17 @@ function slotMachine() {
       console.log("Loser! But at least you don't lose nothin!");
       console.log(totalCash);
       answer = prompt("Would you like to spin again? (y/n)");
-      if ((answer = "y")) {
-        status = "active";
-      } else {
-        status = false;
+      if (answer === "y") {
+        status = true;
+        let betPrompt = prompt("How much you wanna lose?");
+        console.log(`That's it? a measly $${betPrompt}?`);
+        totalCash -= betPrompt;
+        console.log(`Current total after bet $${totalCash}`);
+      } else if (answer === "n") {
+        console.log(
+          `Well, it's a shame to see you go, here's your money: ${totalCash}`
+        );
+        break;
       }
     }
   }
