@@ -24,9 +24,9 @@ function slotMachine() {
   let promptSpin = prompt("Type 'spin' to pull the lever!");
 
   while ((status = true)) {
-    const slotOne = Math.floor(Math.random() * 10);
-    const slotTwo = Math.floor(Math.random() * 10);
-    const slotThree = Math.floor(Math.random() * 10);
+    const slotOne = Math.floor(Math.random() * 4);
+    const slotTwo = Math.floor(Math.random() * 4);
+    const slotThree = Math.floor(Math.random() * 4);
     console.log(slotOne, slotTwo, slotThree);
     if (slotOne === slotTwo && slotTwo === slotThree) {
       console.log("Winner! Here's your prize!");
@@ -56,6 +56,8 @@ function slotMachine() {
         console.log(
           `Well, it's a shame to see you go, here's your money: ${totalCash}`
         );
+        break;
+      } else if (totalCash === 0) {
         break;
       }
     }
