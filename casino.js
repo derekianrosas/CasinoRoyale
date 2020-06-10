@@ -1,4 +1,4 @@
-console.log("Welcome to DiamondBack Casino");
+cconsole.log("Welcome to DiamondBack Casino");
 console.log(
   "Home to our infamous slot machines, where you may or may not win something!"
 );
@@ -38,6 +38,9 @@ function slotMachine() {
         status = true;
       } else {
         status = false;
+      }
+      if (totalCash <= 0) {
+        let totalCash = prompt("How much money do you wanna risk?");
       }
     } else if (
       slotOne != slotTwo ||
