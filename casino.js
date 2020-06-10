@@ -7,6 +7,7 @@ function slotMachine() {
   let totalCash = prompt(
     "Let's get you started, how much money do you wanna risk?"
   );
+  const initialTotalCash = totalCash;
   console.log(`Holy cow! $${totalCash}? that's a ton of money!`);
   let inquiryOne = prompt("Is this your first time playing? (y/n)");
   if (inquiryOne === "y") {
@@ -23,7 +24,7 @@ function slotMachine() {
 
   let promptSpin = prompt("Type 'spin' to pull the lever!");
 
-  while ((status = true)) {
+  while ((status = true && totalCash > 0)) {
     const slotOne = Math.floor(Math.random() * 4);
     const slotTwo = Math.floor(Math.random() * 4);
     const slotThree = Math.floor(Math.random() * 4);
@@ -43,7 +44,8 @@ function slotMachine() {
       slotOne != slotThree ||
       slotTwo != slotThree
     ) {
-      console.log("Loser! But at least you don't lose nothin!");
+      console.log("Loser! Hand it over!");
+      totalCash -= betPrompt * 2;
       console.log(totalCash);
       answer = prompt("Would you like to spin again? (y/n)");
       if (answer === "y") {
@@ -56,8 +58,6 @@ function slotMachine() {
         console.log(
           `Well, it's a shame to see you go, here's your money: ${totalCash}`
         );
-        break;
-      } else if (totalCash === 0) {
         break;
       }
     }
